@@ -11,7 +11,6 @@
             <artifactId>AbsoluteLayout</artifactId>
             <version>RELEASE210</version>
         </dependency>
-        <!-- https://mvnrepository.com/artifact/org.openstreetmap.jmapviewer/jmapviewer -->
         <dependency>
             <groupId>org.openstreetmap.jmapviewer</groupId>
             <artifactId>jmapviewer</artifactId>
