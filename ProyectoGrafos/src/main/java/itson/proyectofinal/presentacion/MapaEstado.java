@@ -4,12 +4,14 @@ package itson.proyectofinal.presentacion;
 import itson.proyectofinal.Grafo;
 import itson.proyectofinal.grafo.MapaCiudades;
 import java.awt.BorderLayout;
+import javax.swing.JOptionPane;
 
 public class MapaEstado extends javax.swing.JFrame {
 
     public MapaEstado() {
         initComponents();
         mostrarMapa();
+        setLocationRelativeTo(null);
     }
 
     private void mostrarMapa() {
@@ -35,6 +37,18 @@ public class MapaEstado extends javax.swing.JFrame {
 
         jPanelFondo = new javax.swing.JPanel();
         jPanel1 = new javax.swing.JPanel();
+        jScrollPaneConsola = new javax.swing.JScrollPane();
+        jPanelConsola = new javax.swing.JPanel();
+        jButtonMST = new javax.swing.JButton();
+        jButtonVisualizacion = new javax.swing.JButton();
+        jButtonRecorrido = new javax.swing.JButton();
+        jButtonSP = new javax.swing.JButton();
+        jButtonComplejidad = new javax.swing.JButton();
+        jButtonSalir = new javax.swing.JButton();
+        jLabelTitulo = new javax.swing.JLabel();
+        jPanelLista = new javax.swing.JPanel();
+        jPanel2 = new javax.swing.JPanel();
+        jLabelFondo = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -48,19 +62,142 @@ public class MapaEstado extends javax.swing.JFrame {
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 770, Short.MAX_VALUE)
+            .addGap(0, 810, Short.MAX_VALUE)
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 549, Short.MAX_VALUE)
+            .addGap(0, 460, Short.MAX_VALUE)
         );
 
-        jPanelFondo.add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 200, 770, -1));
+        jPanelFondo.add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 130, 810, 460));
+
+        jScrollPaneConsola.setBorder(null);
+        jScrollPaneConsola.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
+
+        jPanelConsola.setBackground(new java.awt.Color(239, 231, 218));
+
+        javax.swing.GroupLayout jPanelConsolaLayout = new javax.swing.GroupLayout(jPanelConsola);
+        jPanelConsola.setLayout(jPanelConsolaLayout);
+        jPanelConsolaLayout.setHorizontalGroup(
+            jPanelConsolaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 810, Short.MAX_VALUE)
+        );
+        jPanelConsolaLayout.setVerticalGroup(
+            jPanelConsolaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 160, Short.MAX_VALUE)
+        );
+
+        jScrollPaneConsola.setViewportView(jPanelConsola);
+
+        jPanelFondo.add(jScrollPaneConsola, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 600, 810, 160));
+
+        jButtonMST.setBackground(new java.awt.Color(123, 63, 0));
+        jButtonMST.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jButtonMST.setForeground(new java.awt.Color(255, 255, 255));
+        jButtonMST.setText("Árbol de Expansión Mínima ");
+        jButtonMST.setBorder(null);
+        jButtonMST.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jButtonMST.setFocusPainted(false);
+        jPanelFondo.add(jButtonMST, new org.netbeans.lib.awtextra.AbsoluteConstraints(840, 250, 300, 50));
+
+        jButtonVisualizacion.setBackground(new java.awt.Color(123, 63, 0));
+        jButtonVisualizacion.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jButtonVisualizacion.setForeground(new java.awt.Color(255, 255, 255));
+        jButtonVisualizacion.setText("Visualización de grafo");
+        jButtonVisualizacion.setBorder(null);
+        jButtonVisualizacion.setBorderPainted(false);
+        jButtonVisualizacion.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jButtonVisualizacion.setFocusPainted(false);
+        jButtonVisualizacion.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonVisualizacionActionPerformed(evt);
+            }
+        });
+        jPanelFondo.add(jButtonVisualizacion, new org.netbeans.lib.awtextra.AbsoluteConstraints(840, 130, 300, 50));
+
+        jButtonRecorrido.setBackground(new java.awt.Color(123, 63, 0));
+        jButtonRecorrido.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jButtonRecorrido.setForeground(new java.awt.Color(255, 255, 255));
+        jButtonRecorrido.setText("Recorridos");
+        jButtonRecorrido.setBorder(null);
+        jButtonRecorrido.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jButtonRecorrido.setFocusPainted(false);
+        jPanelFondo.add(jButtonRecorrido, new org.netbeans.lib.awtextra.AbsoluteConstraints(840, 190, 300, 50));
+
+        jButtonSP.setBackground(new java.awt.Color(123, 63, 0));
+        jButtonSP.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jButtonSP.setForeground(new java.awt.Color(255, 255, 255));
+        jButtonSP.setText(" Rutas más cortas ");
+        jButtonSP.setBorder(null);
+        jButtonSP.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jButtonSP.setFocusPainted(false);
+        jPanelFondo.add(jButtonSP, new org.netbeans.lib.awtextra.AbsoluteConstraints(840, 310, 300, 50));
+
+        jButtonComplejidad.setBackground(new java.awt.Color(123, 63, 0));
+        jButtonComplejidad.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jButtonComplejidad.setForeground(new java.awt.Color(255, 255, 255));
+        jButtonComplejidad.setText("Reportes de complejidad ");
+        jButtonComplejidad.setBorder(null);
+        jButtonComplejidad.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jButtonComplejidad.setFocusPainted(false);
+        jPanelFondo.add(jButtonComplejidad, new org.netbeans.lib.awtextra.AbsoluteConstraints(840, 370, 300, 50));
+
+        jButtonSalir.setBackground(new java.awt.Color(123, 63, 0));
+        jButtonSalir.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jButtonSalir.setForeground(new java.awt.Color(255, 255, 255));
+        jButtonSalir.setText("Salir");
+        jButtonSalir.setBorder(null);
+        jButtonSalir.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jButtonSalir.setFocusPainted(false);
+        jPanelFondo.add(jButtonSalir, new org.netbeans.lib.awtextra.AbsoluteConstraints(840, 710, 300, 50));
+
+        jLabelTitulo.setFont(new java.awt.Font("Perpetua Titling MT", 1, 90)); // NOI18N
+        jLabelTitulo.setForeground(new java.awt.Color(51, 17, 9));
+        jLabelTitulo.setText("GUANAJUATO");
+        jPanelFondo.add(jLabelTitulo, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 40, 710, -1));
+
+        jPanelLista.setBackground(new java.awt.Color(239, 231, 218));
+
+        javax.swing.GroupLayout jPanelListaLayout = new javax.swing.GroupLayout(jPanelLista);
+        jPanelLista.setLayout(jPanelListaLayout);
+        jPanelListaLayout.setHorizontalGroup(
+            jPanelListaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 300, Short.MAX_VALUE)
+        );
+        jPanelListaLayout.setVerticalGroup(
+            jPanelListaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 270, Short.MAX_VALUE)
+        );
+
+        jPanelFondo.add(jPanelLista, new org.netbeans.lib.awtextra.AbsoluteConstraints(840, 430, 300, 270));
+
+        jPanel2.setBackground(new java.awt.Color(51, 17, 9));
+
+        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
+        jPanel2.setLayout(jPanel2Layout);
+        jPanel2Layout.setHorizontalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 1070, Short.MAX_VALUE)
+        );
+        jPanel2Layout.setVerticalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 10, Short.MAX_VALUE)
+        );
+
+        jPanelFondo.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 10, 1070, 10));
+
+        jLabelFondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/backgroundgif.gif"))); // NOI18N
+        jLabelFondo.setText("jLabel2");
+        jPanelFondo.add(jLabelFondo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
         getContentPane().add(jPanelFondo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1150, 770));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jButtonVisualizacionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonVisualizacionActionPerformed
+
+    }//GEN-LAST:event_jButtonVisualizacionActionPerformed
 
     /**
      * @param args the command line arguments
@@ -98,7 +235,19 @@ public class MapaEstado extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton jButtonComplejidad;
+    private javax.swing.JButton jButtonMST;
+    private javax.swing.JButton jButtonRecorrido;
+    private javax.swing.JButton jButtonSP;
+    private javax.swing.JButton jButtonSalir;
+    private javax.swing.JButton jButtonVisualizacion;
+    private javax.swing.JLabel jLabelFondo;
+    private javax.swing.JLabel jLabelTitulo;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
+    private javax.swing.JPanel jPanelConsola;
     private javax.swing.JPanel jPanelFondo;
+    private javax.swing.JPanel jPanelLista;
+    private javax.swing.JScrollPane jScrollPaneConsola;
     // End of variables declaration//GEN-END:variables
 }

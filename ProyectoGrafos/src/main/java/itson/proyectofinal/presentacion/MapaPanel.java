@@ -4,12 +4,19 @@ package itson.proyectofinal.presentacion;
 import itson.proyectofinal.Arista;
 import itson.proyectofinal.Grafo;
 import itson.proyectofinal.Nodo;
-import org.openstreetmap.gui.jmapviewer.*;
+import java.awt.BasicStroke;
+import java.awt.Color;
+import java.awt.Graphics;
+import java.awt.Graphics2D;
+import java.awt.Point;
+import java.awt.Stroke;
 import org.openstreetmap.gui.jmapviewer.tilesources.OsmTileSource;
-
-import java.awt.*;
 import java.util.ArrayList;
 import java.util.List;
+import org.openstreetmap.gui.jmapviewer.Coordinate;
+import org.openstreetmap.gui.jmapviewer.JMapViewer;
+import org.openstreetmap.gui.jmapviewer.MapMarkerDot;
+import org.openstreetmap.gui.jmapviewer.MapPolygonImpl;
 import org.openstreetmap.gui.jmapviewer.interfaces.MapPolygon;
 
 public class MapaPanel extends JMapViewer {
@@ -68,7 +75,7 @@ public class MapaPanel extends JMapViewer {
         public CustomPolyline(List<Coordinate> points, Color color) {
             super(points);
             this.color = color;
-            this.stroke = new BasicStroke(2);
+            this.stroke = new BasicStroke(4);
         }
 
         @Override
