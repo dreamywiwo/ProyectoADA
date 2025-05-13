@@ -1,14 +1,15 @@
 package itson.proyectofinal;
 
+import org.openstreetmap.gui.jmapviewer.Coordinate;
+
 public class Nodo {
     private final String nombre;
-    private final double latitud;
-    private final double longitud;
+    private final Coordinate coordenada;
 
-    public Nodo(String nombre, double latitud, double longitud) {
+    public Nodo(String nombre, Coordinate coordenada
+    ) {
         this.nombre = nombre;
-        this.latitud = latitud;
-        this.longitud = longitud;
+        this.coordenada = coordenada;
     }
 
     public String getNombre() { 
@@ -16,11 +17,11 @@ public class Nodo {
     }
     
     public double getLatitud() {
-        return latitud;
+        return coordenada.getLat();
     }
 
     public double getLongitud() {
-        return longitud;
+        return coordenada.getLon();
     }
 
     @Override
