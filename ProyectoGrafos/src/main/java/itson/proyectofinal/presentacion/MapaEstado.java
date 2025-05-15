@@ -4,18 +4,39 @@ package itson.proyectofinal.presentacion;
 import itson.proyectofinal.Grafo;
 import itson.proyectofinal.grafo.MapaCiudades;
 import java.awt.BorderLayout;
+import java.awt.CardLayout;
 import javax.swing.JOptionPane;
+import javax.swing.JPanel;
 
 public class MapaEstado extends javax.swing.JFrame {
+    
+    private CardLayout cardLayout;
 
     public MapaEstado() {
         initComponents();
         mostrarMapa();
         setLocationRelativeTo(null);
+        
+        cardLayout = new CardLayout();
+        jPanelPaneles.setLayout(cardLayout);
+        JPanel panelVacio = new JPanel(); 
+        jPanelPaneles.add(panelVacio, "vacio");
+        panelVacio.setOpaque(false);
+        jPanelPaneles.add(new PanelMST(this), "MST");
+        jPanelPaneles.add(new PanelRutaCorta(this), "RutaCorta");
+        jPanelPaneles.add(new PanelRecorridos(this), "Recorridos");
+        
+        mostrarPanel("vacio");
+
+    }
+    
+    public void mostrarPanel(String nombrePanel) {
+        CardLayout cl = (CardLayout) jPanelPaneles.getLayout();
+        cl.show(jPanelPaneles, nombrePanel);
     }
 
-    private void mostrarMapa() {
 
+    private void mostrarMapa() {
         Grafo grafoCiudades = MapaCiudades.construirGrafo();
 
         MapaPanel mapaPanel = new MapaPanel(grafoCiudades);
@@ -24,6 +45,40 @@ public class MapaEstado extends javax.swing.JFrame {
         jPanel1.add(mapaPanel, BorderLayout.CENTER);
 
         mapaPanel.setSize(jPanel1.getSize());
+    }
+    
+    private void ocultarBotones() {
+        jButtonMST.setVisible(false);
+        jButtonRecorrido.setVisible(false);
+        jButtonSP.setVisible(false);
+        jButtonVisualizacion.setVisible(false);
+        jButtonComplejidad.setVisible(false);
+    }
+    
+    public void mostrarBotones(){
+        jButtonMST.setVisible(true);
+        jButtonRecorrido.setVisible(true);
+        jButtonSP.setVisible(true);
+        jButtonVisualizacion.setVisible(true);
+        jButtonComplejidad.setVisible(true);
+    }
+    
+    public void mostrar() {
+        setVisible(true);
+    }
+
+    public void cerrar() {
+        int opcion = JOptionPane.showConfirmDialog(
+                this,
+                "¿Está seguro de que quiere salir?",
+                "Confirmar salida",
+                JOptionPane.YES_NO_OPTION,
+                JOptionPane.QUESTION_MESSAGE
+            );
+        if (opcion == JOptionPane.YES_OPTION) {
+            setVisible(false);
+            dispose();
+        }
     }
 
     /**
@@ -36,6 +91,7 @@ public class MapaEstado extends javax.swing.JFrame {
     private void initComponents() {
 
         jPanelFondo = new javax.swing.JPanel();
+        jPanelPaneles = new javax.swing.JPanel();
         jPanel1 = new javax.swing.JPanel();
         jScrollPaneConsola = new javax.swing.JScrollPane();
         jPanelConsola = new javax.swing.JPanel();
@@ -54,6 +110,10 @@ public class MapaEstado extends javax.swing.JFrame {
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jPanelFondo.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jPanelPaneles.setOpaque(false);
+        jPanelPaneles.setLayout(new java.awt.CardLayout());
+        jPanelFondo.add(jPanelPaneles, new org.netbeans.lib.awtextra.AbsoluteConstraints(840, 130, 300, 290));
 
         jPanel1.setBackground(new java.awt.Color(51, 51, 51));
         jPanel1.setPreferredSize(new java.awt.Dimension(726, 549));
@@ -98,6 +158,11 @@ public class MapaEstado extends javax.swing.JFrame {
         jButtonMST.setBorder(null);
         jButtonMST.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jButtonMST.setFocusPainted(false);
+        jButtonMST.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonMSTActionPerformed(evt);
+            }
+        });
         jPanelFondo.add(jButtonMST, new org.netbeans.lib.awtextra.AbsoluteConstraints(840, 250, 300, 50));
 
         jButtonVisualizacion.setBackground(new java.awt.Color(123, 63, 0));
@@ -122,6 +187,11 @@ public class MapaEstado extends javax.swing.JFrame {
         jButtonRecorrido.setBorder(null);
         jButtonRecorrido.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jButtonRecorrido.setFocusPainted(false);
+        jButtonRecorrido.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonRecorridoActionPerformed(evt);
+            }
+        });
         jPanelFondo.add(jButtonRecorrido, new org.netbeans.lib.awtextra.AbsoluteConstraints(840, 190, 300, 50));
 
         jButtonSP.setBackground(new java.awt.Color(123, 63, 0));
@@ -131,6 +201,11 @@ public class MapaEstado extends javax.swing.JFrame {
         jButtonSP.setBorder(null);
         jButtonSP.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jButtonSP.setFocusPainted(false);
+        jButtonSP.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonSPActionPerformed(evt);
+            }
+        });
         jPanelFondo.add(jButtonSP, new org.netbeans.lib.awtextra.AbsoluteConstraints(840, 310, 300, 50));
 
         jButtonComplejidad.setBackground(new java.awt.Color(123, 63, 0));
@@ -149,6 +224,11 @@ public class MapaEstado extends javax.swing.JFrame {
         jButtonSalir.setBorder(null);
         jButtonSalir.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jButtonSalir.setFocusPainted(false);
+        jButtonSalir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonSalirActionPerformed(evt);
+            }
+        });
         jPanelFondo.add(jButtonSalir, new org.netbeans.lib.awtextra.AbsoluteConstraints(840, 710, 300, 50));
 
         jLabelTitulo.setFont(new java.awt.Font("Perpetua Titling MT", 1, 90)); // NOI18N
@@ -199,6 +279,31 @@ public class MapaEstado extends javax.swing.JFrame {
 
     }//GEN-LAST:event_jButtonVisualizacionActionPerformed
 
+    private void jButtonMSTActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonMSTActionPerformed
+        
+        ocultarBotones();
+        CardLayout cl = (CardLayout) jPanelPaneles.getLayout();
+        cl.show(jPanelPaneles, "MST");
+    }//GEN-LAST:event_jButtonMSTActionPerformed
+
+    private void jButtonSPActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSPActionPerformed
+        
+        ocultarBotones();
+        CardLayout cl = (CardLayout) jPanelPaneles.getLayout();
+        cl.show(jPanelPaneles, "RutaCorta");
+    }//GEN-LAST:event_jButtonSPActionPerformed
+
+    private void jButtonRecorridoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonRecorridoActionPerformed
+        
+        ocultarBotones();
+        CardLayout cl = (CardLayout) jPanelPaneles.getLayout();
+        cl.show(jPanelPaneles, "Recorridos");
+    }//GEN-LAST:event_jButtonRecorridoActionPerformed
+
+    private void jButtonSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSalirActionPerformed
+        cerrar();
+    }//GEN-LAST:event_jButtonSalirActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -248,6 +353,7 @@ public class MapaEstado extends javax.swing.JFrame {
     private javax.swing.JPanel jPanelConsola;
     private javax.swing.JPanel jPanelFondo;
     private javax.swing.JPanel jPanelLista;
+    private javax.swing.JPanel jPanelPaneles;
     private javax.swing.JScrollPane jScrollPaneConsola;
     // End of variables declaration//GEN-END:variables
 }
