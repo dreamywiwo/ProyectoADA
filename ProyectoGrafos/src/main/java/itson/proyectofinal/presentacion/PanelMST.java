@@ -1,6 +1,9 @@
 
 package itson.proyectofinal.presentacion;
 
+import java.util.Map;
+import org.openstreetmap.gui.jmapviewer.Coordinate;
+
 public class PanelMST extends javax.swing.JPanel {
     private MapaEstado mapaEstado;
 
@@ -8,6 +11,11 @@ public class PanelMST extends javax.swing.JPanel {
         initComponents();
         setOpaque(false);
         this.mapaEstado = mapaEstado;
+        
+        CiudadesUtil.llenarComboCiudades(opcionesCiudades); 
+        opcionesAlgoritmo.addItem("Kruskal");
+        opcionesAlgoritmo.addItem("Prim");
+        opcionesAlgoritmo.addItem("Boruvka");
         
     }
     
@@ -28,31 +36,37 @@ public class PanelMST extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jLabelAlgoritmo = new javax.swing.JLabel();
         jLabelCiudad = new javax.swing.JLabel();
         opcionesCiudades = new javax.swing.JComboBox<>();
         jLabelTitulo = new javax.swing.JLabel();
-        opcionesMST = new javax.swing.JComboBox<>();
+        opcionesAlgoritmo = new javax.swing.JComboBox<>();
         jButtonCerrar = new javax.swing.JButton();
         jButtonAceptar = new javax.swing.JButton();
 
         setPreferredSize(new java.awt.Dimension(300, 290));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        jLabelAlgoritmo.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
+        jLabelAlgoritmo.setForeground(new java.awt.Color(51, 17, 9));
+        jLabelAlgoritmo.setText("Algoritmo a utilizar:");
+        add(jLabelAlgoritmo, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 70, 160, -1));
+
         jLabelCiudad.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
         jLabelCiudad.setForeground(new java.awt.Color(51, 17, 9));
         jLabelCiudad.setText("Ciudad inicial:");
-        add(jLabelCiudad, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 110, 160, -1));
+        add(jLabelCiudad, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 150, 160, -1));
 
         opcionesCiudades.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        add(opcionesCiudades, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 130, 240, 40));
+        add(opcionesCiudades, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 170, 240, 40));
 
         jLabelTitulo.setFont(new java.awt.Font("Century Gothic", 0, 18)); // NOI18N
         jLabelTitulo.setForeground(new java.awt.Color(51, 17, 9));
         jLabelTitulo.setText("MST");
         add(jLabelTitulo, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 20, 70, -1));
 
-        opcionesMST.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        add(opcionesMST, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 60, 240, 40));
+        opcionesAlgoritmo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        add(opcionesAlgoritmo, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 90, 240, 40));
 
         jButtonCerrar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/gbotoncerrar.png"))); // NOI18N
         jButtonCerrar.setBorder(null);
@@ -76,14 +90,17 @@ public class PanelMST extends javax.swing.JPanel {
         mapaEstado.mostrarPanel("vacio");
         mapaEstado.mostrarBotones();
     }//GEN-LAST:event_jButtonCerrarActionPerformed
+    
+
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButtonAceptar;
     private javax.swing.JButton jButtonCerrar;
+    private javax.swing.JLabel jLabelAlgoritmo;
     private javax.swing.JLabel jLabelCiudad;
     private javax.swing.JLabel jLabelTitulo;
+    private javax.swing.JComboBox<String> opcionesAlgoritmo;
     private javax.swing.JComboBox<String> opcionesCiudades;
-    private javax.swing.JComboBox<String> opcionesMST;
     // End of variables declaration//GEN-END:variables
 }

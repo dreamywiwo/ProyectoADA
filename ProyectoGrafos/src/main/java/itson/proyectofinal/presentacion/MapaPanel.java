@@ -51,7 +51,7 @@ public class MapaPanel extends JMapViewer {
 
         for (Nodo nodo : grafo.getNodos()) {
             Coordinate coordOrigen = new Coordinate(nodo.getLatitud(), nodo.getLongitud());
-            
+
             for (Arista arista : grafo.getVecinos(nodo)) {
                 Nodo destino = arista.getDestino();
                 Coordinate coordDestino = new Coordinate(destino.getLatitud(), destino.getLongitud());
@@ -59,6 +59,7 @@ public class MapaPanel extends JMapViewer {
                 List<Coordinate> puntos = new ArrayList<>();
                 puntos.add(coordOrigen);
                 puntos.add(coordDestino);
+                puntos.add(coordDestino); 
 
                 MapPolygon linea = new CustomPolyline(puntos, Color.BLUE);
                 addMapPolygon(linea);

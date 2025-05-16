@@ -8,6 +8,8 @@ import java.awt.CardLayout;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
+
+
 public class MapaEstado extends javax.swing.JFrame {
     
     private CardLayout cardLayout;

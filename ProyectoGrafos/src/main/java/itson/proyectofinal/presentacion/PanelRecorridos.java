@@ -17,6 +17,10 @@ public class PanelRecorridos extends javax.swing.JPanel {
         this.mapaEstado = mapaEstado;
         setOpaque(false);
         
+        CiudadesUtil.llenarComboCiudades(opcionesCiudades); 
+        opcionesAlgoritmo.addItem("BFS");
+        opcionesAlgoritmo.addItem("DFS");
+        
     }
     
     public void mostrar() {
@@ -39,6 +43,10 @@ public class PanelRecorridos extends javax.swing.JPanel {
         jLabelTitulo = new javax.swing.JLabel();
         jButtonCerrar = new javax.swing.JButton();
         jButtonAceptar = new javax.swing.JButton();
+        jLabelAlgoritmo = new javax.swing.JLabel();
+        opcionesCiudades = new javax.swing.JComboBox<>();
+        opcionesAlgoritmo = new javax.swing.JComboBox<>();
+        jLabelCiudad1 = new javax.swing.JLabel();
 
         setPreferredSize(new java.awt.Dimension(300, 290));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -64,6 +72,22 @@ public class PanelRecorridos extends javax.swing.JPanel {
         jButtonAceptar.setContentAreaFilled(false);
         jButtonAceptar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         add(jButtonAceptar, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 240, -1, -1));
+
+        jLabelAlgoritmo.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
+        jLabelAlgoritmo.setForeground(new java.awt.Color(51, 17, 9));
+        jLabelAlgoritmo.setText("Algoritmo a utilizar:");
+        add(jLabelAlgoritmo, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 70, 160, -1));
+
+        opcionesCiudades.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        add(opcionesCiudades, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 170, 240, 40));
+
+        opcionesAlgoritmo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        add(opcionesAlgoritmo, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 90, 240, 40));
+
+        jLabelCiudad1.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
+        jLabelCiudad1.setForeground(new java.awt.Color(51, 17, 9));
+        jLabelCiudad1.setText("Origen:");
+        add(jLabelCiudad1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 150, 160, -1));
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButtonCerrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCerrarActionPerformed
@@ -75,6 +99,10 @@ public class PanelRecorridos extends javax.swing.JPanel {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButtonAceptar;
     private javax.swing.JButton jButtonCerrar;
+    private javax.swing.JLabel jLabelAlgoritmo;
+    private javax.swing.JLabel jLabelCiudad1;
     private javax.swing.JLabel jLabelTitulo;
+    private javax.swing.JComboBox<String> opcionesAlgoritmo;
+    private javax.swing.JComboBox<String> opcionesCiudades;
     // End of variables declaration//GEN-END:variables
 }

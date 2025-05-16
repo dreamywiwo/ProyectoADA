@@ -17,6 +17,12 @@ public class PanelRutaCorta extends javax.swing.JPanel {
         this.mapaEstado = mapaEstado;
         setOpaque(false);
         
+        CiudadesUtil.llenarComboCiudades(opcionesCiudades); 
+        CiudadesUtil.llenarComboCiudades(opcionesCiudades1); 
+        
+        opcionesAlgoritmo.addItem("Bell-man Ford");
+        opcionesAlgoritmo.addItem("Dijkstra");
+        
     }
     
     public void mostrar() {
@@ -36,10 +42,11 @@ public class PanelRutaCorta extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jLabelAlgoritmo = new javax.swing.JLabel();
         jLabelCiudad = new javax.swing.JLabel();
         opcionesCiudades = new javax.swing.JComboBox<>();
         jLabelTitulo = new javax.swing.JLabel();
-        opcionesMST = new javax.swing.JComboBox<>();
+        opcionesAlgoritmo = new javax.swing.JComboBox<>();
         jLabelCiudad1 = new javax.swing.JLabel();
         opcionesCiudades1 = new javax.swing.JComboBox<>();
         jButtonAceptar = new javax.swing.JButton();
@@ -48,29 +55,34 @@ public class PanelRutaCorta extends javax.swing.JPanel {
         setPreferredSize(new java.awt.Dimension(300, 290));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        jLabelAlgoritmo.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
+        jLabelAlgoritmo.setForeground(new java.awt.Color(51, 17, 9));
+        jLabelAlgoritmo.setText("Algoritmo a utilizar:");
+        add(jLabelAlgoritmo, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 70, 160, -1));
+
         jLabelCiudad.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
         jLabelCiudad.setForeground(new java.awt.Color(51, 17, 9));
         jLabelCiudad.setText("Origen:");
-        add(jLabelCiudad, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 110, 100, -1));
+        add(jLabelCiudad, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 150, 100, -1));
 
         opcionesCiudades.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        add(opcionesCiudades, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 130, 110, 40));
+        add(opcionesCiudades, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 170, 110, 40));
 
         jLabelTitulo.setFont(new java.awt.Font("Century Gothic", 0, 18)); // NOI18N
         jLabelTitulo.setForeground(new java.awt.Color(51, 17, 9));
         jLabelTitulo.setText("Ruta mas corta");
         add(jLabelTitulo, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 20, 140, -1));
 
-        opcionesMST.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        add(opcionesMST, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 60, 240, 40));
+        opcionesAlgoritmo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        add(opcionesAlgoritmo, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 90, 240, 40));
 
         jLabelCiudad1.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
         jLabelCiudad1.setForeground(new java.awt.Color(51, 17, 9));
         jLabelCiudad1.setText("Destino:");
-        add(jLabelCiudad1, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 110, 110, -1));
+        add(jLabelCiudad1, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 150, 110, -1));
 
         opcionesCiudades1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        add(opcionesCiudades1, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 130, 110, 40));
+        add(opcionesCiudades1, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 170, 110, 40));
 
         jButtonAceptar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/gbotonaceptar.png"))); // NOI18N
         jButtonAceptar.setBorder(null);
@@ -99,11 +111,12 @@ public class PanelRutaCorta extends javax.swing.JPanel {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButtonAceptar;
     private javax.swing.JButton jButtonCerrar;
+    private javax.swing.JLabel jLabelAlgoritmo;
     private javax.swing.JLabel jLabelCiudad;
     private javax.swing.JLabel jLabelCiudad1;
     private javax.swing.JLabel jLabelTitulo;
+    private javax.swing.JComboBox<String> opcionesAlgoritmo;
     private javax.swing.JComboBox<String> opcionesCiudades;
     private javax.swing.JComboBox<String> opcionesCiudades1;
-    private javax.swing.JComboBox<String> opcionesMST;
     // End of variables declaration//GEN-END:variables
 }
